@@ -34,8 +34,8 @@ const Query = async (
         console.log(
           "\x1b[41m",
           "Query executed",
-          query,
-          "failed",
+          `(${query})`,
+          `failed from db ${DB_DATABASENAME}`,
           "\x1b[0m",
           "\n"
         );
@@ -45,8 +45,8 @@ const Query = async (
       console.log(
         "\x1b[32m",
         "Query executed",
-        query,
-        "success",
+        `(${query})`,
+        `success from db ${DB_DATABASENAME}`,
         "\x1b[0m",
         "\n"
       );

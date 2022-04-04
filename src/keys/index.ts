@@ -11,3 +11,5 @@ export const DB_PASSWORD = process.env.DB_PASSWORD;
 export const DB_DATABASENAME = process.env.DB_DATABASENAME;
 export const SECRET_TOKEN_AUTHORIZATION =
   process.env.SECRET_TOKEN_AUTHORIZATION_API;
+export const SECRET_TOKEN_SESSION_COOKIE =
+  process.env.SECRET_TOKEN_SESSION_COOKIE;

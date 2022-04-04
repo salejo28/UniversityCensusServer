@@ -18,10 +18,17 @@ module.exports = {
     semi: ["error", "always"],
     curly: "error",
     "no-empty": "error",
-    "no-unused-vars": [
+    "@typescript-eslint/no-unused-vars": [
       "error",
       { vars: "all", args: "after-used", ignoreRestSiblings: false },
     ],
     eqeqeq: "error",
+    "prefer-const": [
+      "error",
+      {
+        destructuring: "any",
+        ignoreReadBeforeAssign: false,
+      },
+    ],
   },
 };
