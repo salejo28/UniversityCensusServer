@@ -17,11 +17,10 @@ export default class TypeIdControllers implements TypeIdControllersUI {
 
   public async GetTypeId(req: Request, res: Response): Promise<Response> {
     try {
+      const { tid } = req.params;
       const model = new TypeIdModel();
-      await model.getOne({
-        tipo_documento: "Cedula",
-      });
-      return res.send("Types");
+      const idType = await model.getById(tid);
+      return res.json(idType);
     } catch (error) {
       console.error("Error GetTypesId =>", error);
       throw new Error(error as string);

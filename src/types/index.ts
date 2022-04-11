@@ -1,6 +1,6 @@
 import { AuthRoutesUI, TypeIdRoutesUI } from "./routes";
 import { AuthControllersUI, TypeIdControllersUI } from "./controllers";
-import { TypeIdModelUI, One } from "./models";
+import { TypeIdModelUI, GetOneOrDeleteOne } from "./models";
 
 export {
   AuthRoutesUI,
@@ -8,5 +8,5 @@ export {
   TypeIdControllersUI,
   TypeIdRoutesUI,
   TypeIdModelUI,
-  One,
+  GetOneOrDeleteOne,
 };

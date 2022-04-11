@@ -19,7 +19,7 @@ class TypeIdRoutes implements TypeIdRoutesUI {
   }
 
   getTypeId() {
-    this.router.get("/one/", this.controllers.GetTypeId);
+    this.router.get("/:tid", this.controllers.GetTypeId);
   }
 
   getTypesId() {

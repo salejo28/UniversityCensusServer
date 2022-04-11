@@ -1,24 +1,32 @@
 import { Connect, Query } from "config";
 
-import { TypeIdModelUI, One } from "types";
+import { GetQueryColumns } from "lib";
+import { TypeIdModelUI, GetOneOrDeleteOne } from "types";
 
 export default class TypeIdModel implements TypeIdModelUI {
   public async getAll() {
     const connection = await Connect();
-    const result = await Query(connection, "SELECT * FROM ct_tipos_documentos");
+    const result = await Query(connection, "SELECT * FROM idtypes");
     connection.end();
     return result;
   }
 
-  public async getOne(params: One) {
+  public async getOne(params: GetOneOrDeleteOne) {
     const connection = await Connect();
-    const key = Object.keys(params)[0];
-    console.log(params[key]);
-    /* const result = await Query(
-      connection,
-      `SELECT * FROM ct_tipos_documentos WHERE ${key} = ${params[key]}`
-    ); */
+    const query = GetQueryColumns("idtypes", "SELECT", params);
+    const result = await Query(connection, query, Object.values(params));
     connection.end();
-    /* console.log(result); */
+    return result[0];
+  }
+
+  public async getById(id: number | string) {
+    const connection = await Connect();
+    const result = await Query(
+      connection,
+      "SELECT * FROM idtypes WHERE id = ?",
+      id
+    );
+    connection.end();
+    return result[0];
   }
 }

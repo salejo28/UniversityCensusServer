@@ -8,8 +8,8 @@ CREATE TABLE user(
   surname VARCHAR(30) NOT NULL,
   lastName VARCHAR(30) NOT NULL,
   email VARCHAR(100) NOT NULL UNIQUE,
-  idType VARCHAR(20) NOT NULL,
-  idNumber VARCHAR(20) NOT NULL UNIQUE,
+  idType VARCHAR(30) NOT NULL,
+  idNumber VARCHAR(50) NOT NULL,
   cellphone VARCHAR(20) NOT NULL UNIQUE,
   imgUri TEXT DEFAULT NULL,
   password VARCHAR(100) NOT NULL,
@@ -111,13 +111,11 @@ CREATE TABLE animal(
   bornDate DATE NOT NULL DEFAULT "1900-01-01",
   owner INT(11) NOT NULL,
   race INT(11) NOT NULL,
-  specie INT(11) NOT NULL,
   createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
   CONSTRAINT fk_owner_pet FOREIGN KEY (owner) REFERENCES user(id),
-  CONSTRAINT fk_race_pet FOREIGN KEY (race) REFERENCES race(id),
-  CONSTRAINT fk_specie_pet FOREIGN KEY (specie) REFERENCES specie(id)
+  CONSTRAINT fk_race_pet FOREIGN KEY (race) REFERENCES race(id)
 ) ENGINE = InnoDB;
 
 ALTER TABLE animal
@@ -218,3 +216,25 @@ ALTER TABLE aditional_info_official
 DESCRIBE aditional_info_official;
 
 -- TODO CREATE TABLE IDTYPES
+CREATE TABLE idTypes(
+  id INT(11) NOT NULL,
+  abbreviation  VARCHAR(3) NOT NULL,
+  value VARCHAR(50)
+) ENGINE = InnoDB;
+
+ALTER TABLE idTypes
+  ADD PRIMARY KEY (id);
+
+ALTER TABLE idTypes
+  MODIFY id INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 1;
+
+DESCRIBE idTypes;
+
+-- INSET VALUES IDTYPES
+INSERT INTO idTypes
+  (abbreviation, value)
+VALUES
+  ("CC", "Cedula de Ciudadania"),
+  ("CE", "Cedula de Extranjeria"),
+  ("PA", "Pasaporte"),
+  ("PEP", "Permiso Especial de Permanencia");

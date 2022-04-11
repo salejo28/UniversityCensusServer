@@ -14,6 +14,12 @@ module.exports = {
   ],
   rules: {
     "@typescript-eslint/no-explicit-any": ["error", { fixToUnknown: true }],
+    "@typescript-eslint/no-empty-interface": [
+      "error",
+      {
+        allowSingleExtends: true,
+      },
+    ],
     quotes: ["error", "double"],
     semi: ["error", "always"],
     curly: "error",
