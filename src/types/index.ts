@@ -1,6 +1,39 @@
-import { AuthRoutesUI, TypeIdRoutesUI } from "./routes";
-import { AuthControllersUI, TypeIdControllersUI } from "./controllers";
-import { TypeIdModelUI, GetOneOrDeleteOne } from "./models";
+import {
+  AuthRoutesUI,
+  TypeIdRoutesUI,
+  UserRoutesUI,
+  SpecieRoutesUI,
+  RaceRoutesUI,
+} from "./routes";
+import {
+  AuthControllersUI,
+  TypeIdControllersUI,
+  UserControllerUI,
+  SpecieControllersUI,
+  RaceControllersUI,
+} from "./controllers";
+import {
+  TypeIdModelUI,
+  GetOneOrDeleteOne,
+  UserModelUI,
+  UserRolesModelUI,
+  User,
+  SpecieModelUI,
+  Specie,
+  Update,
+  RaceModelUI,
+} from "./models";
+import {
+  AuthServiceUI,
+  RegisterPayload,
+  UserServiceUI,
+  ErrorServiceResponse,
+  SuccessServiceResponse,
+  LoginPayload,
+  SpeciePayload,
+  RacePayload,
+} from "./services";
+import { AuthRequest } from "./auth";
 
 export {
   AuthRoutesUI,
@@ -9,4 +42,26 @@ export {
   TypeIdRoutesUI,
   TypeIdModelUI,
   GetOneOrDeleteOne,
+  AuthServiceUI,
+  RegisterPayload,
+  UserModelUI,
+  UserRolesModelUI,
+  UserServiceUI,
+  ErrorServiceResponse,
+  SuccessServiceResponse,
+  LoginPayload,
+  User,
+  UserControllerUI,
+  UserRoutesUI,
+  AuthRequest,
+  SpecieControllersUI,
+  SpecieRoutesUI,
+  SpecieModelUI,
+  SpeciePayload,
+  Specie,
+  Update,
+  RaceControllersUI,
+  RaceRoutesUI,
+  RaceModelUI,
+  RacePayload,
 };

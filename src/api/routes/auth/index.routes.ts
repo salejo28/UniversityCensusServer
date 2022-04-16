@@ -13,14 +13,25 @@ class AuthRoutes implements AuthRoutesUI {
 
     this.register();
     this.login();
+    this.refrestToken();
   }
 
   register() {
-    this.router.post("/register", this.controllers.Register);
+    this.router.post(
+      "/register",
+      this.controllers.Register.bind(this.controllers)
+    );
   }
 
   login() {
-    this.router.post("/login", this.controllers.Login);
+    this.router.post("/login", this.controllers.Login.bind(this.controllers));
+  }
+
+  refrestToken() {
+    this.router.post(
+      "/refresh-token",
+      this.controllers.RefreshToken.bind(this.controllers)
+    );
   }
 }
 

@@ -1,3 +1,3 @@
-import { GetQueryColumns } from "./db";
+import { GetQueryColumns, InsertData, UpdateQuery } from "./db";
 
-export { GetQueryColumns };
+export { GetQueryColumns, InsertData, UpdateQuery };

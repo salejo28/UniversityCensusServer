@@ -5,7 +5,6 @@ import helmet from "helmet"; // This sets various HTTP headers that can help def
 import hpp from "hpp"; // This protects against HTTP Parameter Pollution attacks
 /* import csurf from "csurf"; */ // This protects against Cross-site request forgery. This needs to be used after our cookie-session connect.
 import limiter from "express-rate-limit";
-import session from "cookie-session";
 import CookieParser from "cookie-parser";
 
 import { SECRET_TOKEN_SESSION_COOKIE } from "keys";
@@ -13,7 +12,13 @@ import { methods } from "appConstants";
 import { originAccept } from "helpers";
 import { AuthenticateApiVerify } from "middlewares";
 import { myOnwEmitter } from "subscribers";
-import { AuthRoutes, TypeIdRoutes } from "routes";
+import {
+  AuthRoutes,
+  TypeIdRoutes,
+  UserRoutes,
+  SpecieRoutes,
+  RaceRoutes,
+} from "routes";
 
 export default class App {
   private app: Application;
@@ -35,16 +40,10 @@ export default class App {
   private Middlewares() {
     this.app.use(morgan("dev"));
     this.app.use(express.json({ limit: "50mb" }));
-    this.app.use(express.urlencoded({ extended: true }));
+    this.app.use(express.urlencoded({ extended: true, limit: "50mb" }));
     this.app.use(helmet());
     this.app.use(hpp());
-    this.app.use(
-      session({
-        name: "session",
-        secret: SECRET_TOKEN_SESSION_COOKIE,
-      })
-    );
-    this.app.use(CookieParser());
+    this.app.use(CookieParser(SECRET_TOKEN_SESSION_COOKIE));
     /* this.app.use(csurf({ cookie: true })); */
     this.app.use(
       limiter({
@@ -64,6 +63,9 @@ export default class App {
   private Routes() {
     this.app.use("/api/auth", AuthRoutes);
     this.app.use("/api/typeIds", TypeIdRoutes);
+    this.app.use("/api/user/", UserRoutes);
+    this.app.use("/api/specie", SpecieRoutes);
+    this.app.use("/api/race", RaceRoutes);
   }
 
   public async ProofDB() {

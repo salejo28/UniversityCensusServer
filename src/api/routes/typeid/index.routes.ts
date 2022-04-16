@@ -19,23 +19,29 @@ class TypeIdRoutes implements TypeIdRoutesUI {
   }
 
   getTypeId() {
-    this.router.get("/:tid", this.controllers.GetTypeId);
+    this.router.get("/:tid", this.controllers.GetTypeId.bind(this.controllers));
   }
 
   getTypesId() {
-    this.router.get("/", this.controllers.GetTypesId);
+    this.router.get("/", this.controllers.GetTypesId.bind(this.controllers));
   }
 
   createTypeId() {
-    this.router.post("/", this.controllers.CreateTypeId);
+    this.router.post("/", this.controllers.CreateTypeId.bind(this.controllers));
   }
 
   updateTypeId() {
-    this.router.put("/:tid", this.controllers.UpdateTypeId);
+    this.router.put(
+      "/:tid",
+      this.controllers.UpdateTypeId.bind(this.controllers)
+    );
   }
 
   deleteTypeId() {
-    this.router.delete("/:tid", this.controllers.DeleteTypeId);
+    this.router.delete(
+      "/:tid",
+      this.controllers.DeleteTypeId.bind(this.controllers)
+    );
   }
 }
 

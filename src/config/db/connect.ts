@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import mysql from "mysql";
+import mysql from "mysql2";
 
 import { DB_DATABASENAME, DB_HOST, DB_USER, DB_PASSWORD } from "keys";
 
-const params: mysql.ConnectionConfig = {
+const params: mysql.ConnectionOptions = {
   user: DB_USER,
   host: DB_HOST,
   password: DB_PASSWORD,
@@ -25,10 +25,10 @@ const Connect = async (): Promise<mysql.Connection> =>
 
 const Query = async (
   connection: mysql.Connection,
-  query: string | mysql.QueryOptions,
+  query: string,
   variables?: any
-): Promise<any[]> =>
-  new Promise<any[]>((resolve, reject) => {
+): Promise<any> =>
+  new Promise<any>((resolve, reject) => {
     connection.query(query, variables, (error, result) => {
       if (error) {
         console.log(
