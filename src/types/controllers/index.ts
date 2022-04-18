@@ -36,3 +36,35 @@ export interface RaceControllersUI {
   UpdateRace: (req: AuthRequest, res: Response) => Promise<Response>;
   DeleteRace: (req: AuthRequest, res: Response) => Promise<Response>;
 }
+
+export interface AnimalControllersUI {
+  GetAnimals: (req: AuthRequest, res: Response) => Promise<Response>;
+  GetAnimal: (req: AuthRequest, res: Response) => Promise<Response>;
+  CreateAnimal: (req: AuthRequest, res: Response) => Promise<Response>;
+  UpdateAnimal: (req: AuthRequest, res: Response) => Promise<Response>;
+  GetAnimalByOwner: (req: AuthRequest, res: Response) => Promise<Response>;
+}
+
+export interface SectorControllersUI {
+  GetSectors: (req: AuthRequest, res: Response) => Promise<Response>;
+  GetSector: (req: AuthRequest, res: Response) => Promise<Response>;
+  GetSectorsAssigned: (req: AuthRequest, res: Response) => Promise<Response>;
+  CreateSector: (req: AuthRequest, res: Response) => Promise<Response>;
+  AssignSector: (req: AuthRequest, res: Response) => Promise<Response>;
+  UnAssignSector: (req: AuthRequest, res: Response) => Promise<Response>;
+  UpdateSector: (req: AuthRequest, res: Response) => Promise<Response>;
+}
+
+export interface LocationControllersUI {
+  GetLocations?: (req: AuthRequest, res: Response) => Promise<Response>;
+  GetLocation: (req: AuthRequest, res: Response) => Promise<Response>;
+  CreateLocation: (req: AuthRequest, res: Response) => Promise<Response>;
+  UpdateLocation: (req: AuthRequest, res: Response) => Promise<Response>;
+}
+
+export interface CensusControllersUI {
+  GetCensus: (req: AuthRequest, res: Response) => Promise<Response>;
+  MyReport: (req: AuthRequest, res: Response) => Promise<Response>;
+  MakeCensus: (req: AuthRequest, res: Response) => Promise<Response>;
+  UpdateCensus: (req: AuthRequest, res: Response) => Promise<Response>;
+}

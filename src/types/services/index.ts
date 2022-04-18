@@ -1,3 +1,5 @@
+import { Geolocation } from "types";
+
 export interface RegisterPayload {
   firstName: string;
   lastName: string;
@@ -33,6 +35,35 @@ export interface RacePayload {
   name: string;
   dangerous: boolean | number;
   specie: number | string;
+}
+
+export interface AnimalPayload {
+  name: string;
+  bornDate: string;
+  owner: number | string;
+  race: number | string;
+}
+
+export interface SectorPayload {
+  name: string;
+  isNeighborhood: boolean | number;
+  isSidewalk: boolean | number;
+  start: Geolocation;
+  end: Geolocation;
+  official: string | number | null;
+}
+
+export interface LocationPayload {
+  geo: Geolocation;
+  sector: number | string;
+  address: string;
+}
+
+export interface CensusPayload {
+  pet: string | number;
+  owner: string | number;
+  location: string | number;
+  description: string;
 }
 
 export interface AuthServiceUI {

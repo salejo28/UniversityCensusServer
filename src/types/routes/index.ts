@@ -34,3 +34,33 @@ export interface RaceRoutesUI {
   updateRace: () => void;
   deleteRace: () => void;
 }
+
+export interface AnimalRoutesUI {
+  getAnimal: () => void;
+  getAnimals: () => void;
+  getAnimalByOwner: () => void;
+  createAnimal: () => void;
+  updateAnimal: () => void;
+}
+
+export interface SectorRoutesUI {
+  getSectors: () => void;
+  getSector: () => void;
+  createSector: () => void;
+  updateSector: () => void;
+  assignSector: () => void;
+  unassignSector: () => void;
+}
+
+export interface LocationRoutesUI {
+  getLocation: () => void;
+  createLocation: () => void;
+  updateLocation: () => void;
+}
+
+export interface CensusRoutesUI {
+  getCensus: () => void;
+  myReport: () => void;
+  makeCensus: () => void;
+  updateCensus: () => void;
+}

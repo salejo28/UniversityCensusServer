@@ -4,6 +4,10 @@ import {
   UserRoutesUI,
   SpecieRoutesUI,
   RaceRoutesUI,
+  AnimalRoutesUI,
+  SectorRoutesUI,
+  LocationRoutesUI,
+  CensusRoutesUI,
 } from "./routes";
 import {
   AuthControllersUI,
@@ -11,6 +15,10 @@ import {
   UserControllerUI,
   SpecieControllersUI,
   RaceControllersUI,
+  AnimalControllersUI,
+  SectorControllersUI,
+  LocationControllersUI,
+  CensusControllersUI,
 } from "./controllers";
 import {
   TypeIdModelUI,
@@ -22,6 +30,13 @@ import {
   Specie,
   Update,
   RaceModelUI,
+  AnimalModelUI,
+  SectorModelUI,
+  Geolocation,
+  Sector,
+  LocationModelUI,
+  CensusModelUI,
+  Census,
 } from "./models";
 import {
   AuthServiceUI,
@@ -32,6 +47,10 @@ import {
   LoginPayload,
   SpeciePayload,
   RacePayload,
+  AnimalPayload,
+  SectorPayload,
+  LocationPayload,
+  CensusPayload,
 } from "./services";
 import { AuthRequest } from "./auth";
 
@@ -64,4 +83,23 @@ export {
   RaceRoutesUI,
   RaceModelUI,
   RacePayload,
+  AnimalRoutesUI,
+  AnimalControllersUI,
+  AnimalModelUI,
+  AnimalPayload,
+  SectorModelUI,
+  SectorControllersUI,
+  Geolocation,
+  SectorPayload,
+  Sector,
+  SectorRoutesUI,
+  LocationRoutesUI,
+  LocationControllersUI,
+  LocationModelUI,
+  LocationPayload,
+  Census,
+  CensusModelUI,
+  CensusPayload,
+  CensusControllersUI,
+  CensusRoutesUI,
 };

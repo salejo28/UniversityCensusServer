@@ -18,6 +18,10 @@ import {
   UserRoutes,
   SpecieRoutes,
   RaceRoutes,
+  AnimalRoutes,
+  SectorRoutes,
+  LocationRoutes,
+  CensusRoutes,
 } from "routes";
 
 export default class App {
@@ -66,6 +70,10 @@ export default class App {
     this.app.use("/api/user/", UserRoutes);
     this.app.use("/api/specie", SpecieRoutes);
     this.app.use("/api/race", RaceRoutes);
+    this.app.use("/api/animal", AnimalRoutes);
+    this.app.use("/api/sector", SectorRoutes);
+    this.app.use("/api/location", LocationRoutes);
+    this.app.use("/api/census", CensusRoutes);
   }
 
   public async ProofDB() {
