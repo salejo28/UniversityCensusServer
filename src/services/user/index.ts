@@ -1,4 +1,4 @@
-import { RegisterPayload, UserServiceUI } from "types";
+import { RegisterPayload, UserServiceUI, User } from "types";
 import { UserModel, UserRolesModel } from "models";
 import { EncryptPassword } from "security";
 
@@ -46,5 +46,10 @@ export default class UserService implements UserServiceUI {
       success: true,
       id: uid,
     };
+  }
+
+  public async GetUserByEmail(email: string) {
+    const user: User = (await this.userModel.getOne({ email })) as User;
+    return user;
   }
 }

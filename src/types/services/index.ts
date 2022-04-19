@@ -1,4 +1,5 @@
 import { Geolocation } from "types";
+import { User } from "../models";
 
 export interface RegisterPayload {
   firstName: string;
@@ -78,4 +79,5 @@ export interface UserServiceUI {
     payload: RegisterPayload,
     role?: number
   ) => Promise<SuccessServiceResponse | ErrorServiceResponse>;
+  GetUserByEmail: (email: string) => Promise<User>;
 }

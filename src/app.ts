@@ -23,6 +23,7 @@ import {
   LocationRoutes,
   CensusRoutes,
 } from "routes";
+import { AddUserAdmin } from "auto";
 
 export default class App {
   private app: Application;
@@ -35,10 +36,15 @@ export default class App {
     this.Settings();
     this.Middlewares();
     this.Routes();
+    this.Auto();
   }
 
   private Settings() {
     this.app.set("port", this.port);
+  }
+
+  private async Auto() {
+    await AddUserAdmin();
   }
 
   private Middlewares() {

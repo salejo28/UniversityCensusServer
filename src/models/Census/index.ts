@@ -8,7 +8,7 @@ export default class CensusModel implements CensusModelUI {
     const connection = await Connect();
     const result = await Query(
       connection,
-      "SELECT census.description, census.createdAt, census.description, census.updatedAt, census.date_census FROM census INNER JOIN user AS owner ON owner.id = census.owner"
+      "SELECT census.description, census.createdAt, census.description, census.updatedAt, census.date_census, CONCAT_WS(' ', owner.firstName, owner.middleName, owner.surname, owner.lastName) AS ownerName, owner.id AS ownerId, owner.email AS ownerEmail, CONCAT_WS(' ', official.firstName, official.middleName, official.surname, official.lastName) AS officialName, official.id AS officialId, animal.name AS animalName, animal.id AS animalId FROM census INNER JOIN user AS owner ON owner.id = census.owner INNER JOIN user AS official ON official.id = census.official INNER JOIN animal ON census.pet = animal.id"
     );
     connection.end();
     return result;
