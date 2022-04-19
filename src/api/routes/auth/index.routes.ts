@@ -2,6 +2,7 @@ import { Router } from "express";
 
 import { AuthControllers } from "controllers";
 import { AuthRoutesUI } from "types";
+import { ValidateLogin, ValidateRegister } from "middlewares";
 
 class AuthRoutes implements AuthRoutesUI {
   public router: Router;
@@ -19,12 +20,17 @@ class AuthRoutes implements AuthRoutesUI {
   register() {
     this.router.post(
       "/register",
+      ValidateRegister,
       this.controllers.Register.bind(this.controllers)
     );
   }
 
   login() {
-    this.router.post("/login", this.controllers.Login.bind(this.controllers));
+    this.router.post(
+      "/login",
+      ValidateLogin,
+      this.controllers.Login.bind(this.controllers)
+    );
   }
 
   refrestToken() {

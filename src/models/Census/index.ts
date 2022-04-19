@@ -4,17 +4,27 @@ import { CensusModelUI, CensusPayload, Update } from "types";
 
 export default class CensusModel implements CensusModelUI {
   public async getAll() {
-    /* SELECT census.description, census.createdAt, census.updatedAt, owner, official, location, pet FROM census LEFT JOIN user AS ow ON census.owner = ow.id GROUP BY owner LEFT JOIN user AS of ON census.official = of.id GROUP BY official LEFT JOIN location ON location.id = census.location GROUP BY location LEFT JOIN animal ON animal.id = census.pet GROUP BY pet */
     const connection = await Connect();
     const result = await Query(
       connection,
-      "SELECT census.description, census.createdAt, census.description, census.updatedAt, census.date_census, CONCAT_WS(' ', owner.firstName, owner.middleName, owner.surname, owner.lastName) AS ownerName, owner.id AS ownerId, owner.email AS ownerEmail, CONCAT_WS(' ', official.firstName, official.middleName, official.surname, official.lastName) AS officialName, official.id AS officialId, animal.name AS animalName, animal.id AS animalId FROM census INNER JOIN user AS owner ON owner.id = census.owner INNER JOIN user AS official ON official.id = census.official INNER JOIN animal ON census.pet = animal.id"
+      "SELECT census.description, census.createdAt, census.description, census.updatedAt, census.date_census, CONCAT_WS(' ', owner.firstName, owner.middleName, owner.surname, owner.lastName) AS ownerName, owner.id AS ownerId, owner.email AS ownerEmail, CONCAT_WS(' ', official.firstName, official.middleName, official.surname, official.lastName) AS officialName, official.id AS officialId, animal.name AS animalName, animal.id AS animalId, location.address AS addressLocation, location.id AS locationId FROM census INNER JOIN user AS owner ON owner.id = census.owner INNER JOIN user AS official ON official.id = census.official INNER JOIN animal ON census.pet = animal.id INNER JOIN location ON location.id = census.location"
     );
     connection.end();
     return result;
   }
 
-  async create(data: CensusPayload) {
+  public async getById(id: string | number) {
+    const connection = await Connect();
+    const result = await Query(
+      connection,
+      "SELECT census.description, census.createdAt, census.description, census.updatedAt, census.date_census, CONCAT_WS(' ', owner.firstName, owner.middleName, owner.surname, owner.lastName) AS ownerName, owner.id AS ownerId, owner.email AS ownerEmail, CONCAT_WS(' ', official.firstName, official.middleName, official.surname, official.lastName) AS officialName, official.id AS officialId, animal.name AS animalName, animal.id AS animalId, location.address AS addressLocation, location.id AS locationId FROM census INNER JOIN user AS owner ON owner.id = census.owner INNER JOIN user AS official ON official.id = census.official INNER JOIN animal ON census.pet = animal.id INNER JOIN location ON location.id = census.location WHERE census.id = ?",
+      id
+    );
+    connection.end();
+    return result[0];
+  }
+
+  public async create(data: CensusPayload) {
     const connection = await Connect();
     const query = InsertData("census");
     const result = await Query(connection, query, data);
@@ -56,7 +66,7 @@ export default class CensusModel implements CensusModelUI {
     const connection = await Connect();
     const result = await Query(
       connection,
-      "SELECT census.description, census.createdAt, census.updatedAt, owner, official, location, pet FROM census INNER JOIN user AS owner ON census.owner = owner.id GROUP BY owner INNER JOIN user AS official ON census.official = official.id GROUP BY official INNER JOIN location ON location.id = census.location GROUP BY location INNER JOIN animal ON animal.id = census.pet GROUP BY pet WHERE census.official = ?",
+      "SELECT census.description, census.createdAt, census.description, census.updatedAt, census.date_census, CONCAT_WS(' ', owner.firstName, owner.middleName, owner.surname, owner.lastName) AS ownerName, owner.id AS ownerId, owner.email AS ownerEmail, CONCAT_WS(' ', official.firstName, official.middleName, official.surname, official.lastName) AS officialName, official.id AS officialId, animal.name AS animalName, animal.id AS animalId, location.address AS addressLocation, location.id AS locationId FROM census INNER JOIN user AS owner ON owner.id = census.owner INNER JOIN user AS official ON official.id = census.official INNER JOIN animal ON census.pet = animal.id INNER JOIN location ON location.id = census.location WHERE census.official = ?",
       idOfficial
     );
     connection.end();

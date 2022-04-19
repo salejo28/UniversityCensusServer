@@ -9,13 +9,14 @@ class CensusRoutes implements CensusRoutesUI {
   private controllers: CensusControllers;
 
   constructor() {
-    this.router = Router();
+    this.router = Router({ strict: true });
     this.controllers = new CensusControllers();
 
     this.getCensus();
     this.myReport();
     this.makeCensus();
     this.updateCensus();
+    this.getOneCensus();
   }
 
   getCensus() {
@@ -26,9 +27,17 @@ class CensusRoutes implements CensusRoutesUI {
     );
   }
 
+  getOneCensus() {
+    this.router.get(
+      "/:cid",
+      [Authenticate, StaffOnly],
+      this.controllers.GetOneCensus.bind(this.controllers)
+    );
+  }
+
   myReport() {
     this.router.get(
-      "/my-report",
+      "/my-report/",
       [Authenticate, StaffOnly],
       this.controllers.MyReport.bind(this.controllers)
     );

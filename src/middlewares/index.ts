@@ -5,6 +5,7 @@ import {
   Authenticate,
   StaffOnly,
 } from "./auth";
+import { ValidateLogin, ValidateRegister } from "./validations";
 
 export {
   AuthenticateApiVerify,
@@ -12,4 +13,6 @@ export {
   SignRefreshToken,
   Authenticate,
   StaffOnly,
+  ValidateLogin,
+  ValidateRegister,
 };

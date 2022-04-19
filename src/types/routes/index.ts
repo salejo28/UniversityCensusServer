@@ -61,6 +61,7 @@ export interface LocationRoutesUI {
 export interface CensusRoutesUI {
   getCensus: () => void;
   myReport: () => void;
+  getOneCensus: () => void;
   makeCensus: () => void;
   updateCensus: () => void;
 }

@@ -1,5 +1,5 @@
 import { Geolocation } from "types";
-import { User } from "../models";
+import { Update, User } from "../models";
 
 export interface RegisterPayload {
   firstName: string;
@@ -67,6 +67,16 @@ export interface CensusPayload {
   description: string;
 }
 
+export interface ErrorUI {
+  path: string[];
+  message: string;
+}
+
+export interface ValidationResponse {
+  errors: ErrorUI;
+  valid: boolean;
+}
+
 export interface AuthServiceUI {
   Register?: (
     payload: RegisterPayload
@@ -80,4 +90,8 @@ export interface UserServiceUI {
     role?: number
   ) => Promise<SuccessServiceResponse | ErrorServiceResponse>;
   GetUserByEmail: (email: string) => Promise<User>;
+  UpdateUser: (
+    payload: Update,
+    id: string | number
+  ) => Promise<SuccessServiceResponse | ErrorServiceResponse>;
 }

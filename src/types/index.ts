@@ -51,6 +51,8 @@ import {
   SectorPayload,
   LocationPayload,
   CensusPayload,
+  ErrorUI,
+  ValidationResponse,
 } from "./services";
 import { AuthRequest } from "./auth";
 
@@ -102,4 +104,6 @@ export {
   CensusPayload,
   CensusControllersUI,
   CensusRoutesUI,
+  ErrorUI,
+  ValidationResponse,
 };

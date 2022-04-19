@@ -1,4 +1,4 @@
-import { RegisterPayload, UserServiceUI, User } from "types";
+import { RegisterPayload, UserServiceUI, User, Update } from "types";
 import { UserModel, UserRolesModel } from "models";
 import { EncryptPassword } from "security";
 
@@ -51,5 +51,24 @@ export default class UserService implements UserServiceUI {
   public async GetUserByEmail(email: string) {
     const user: User = (await this.userModel.getOne({ email })) as User;
     return user;
+  }
+
+  public async UpdateUser(payload: Update, id: number | string) {
+    if (payload.email) {
+      const existUser = await this.userModel.serachIfExistForUpdate(id, {
+        email: payload.email,
+      });
+      if (existUser.length > 0) {
+        return {
+          success: false,
+          path: "email",
+        };
+      }
+    }
+    await this.userModel.updateById(id, payload);
+    return {
+      success: true,
+      id: id as number,
+    };
   }
 }

@@ -15,6 +15,11 @@ export default class CensusControllers implements CensusControllersUI {
     return res.json(census);
   }
 
+  async GetOneCensus(req: AuthRequest, res: Response) {
+    const census = await this.model.getById(req.params.cid);
+    return res.json(census);
+  }
+
   async MyReport(req: AuthRequest, res: Response) {
     const census = await this.model.getReportByOfficial(req.user?.id as number);
     return res.json(census);

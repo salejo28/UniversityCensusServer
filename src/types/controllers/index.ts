@@ -67,4 +67,5 @@ export interface CensusControllersUI {
   MyReport: (req: AuthRequest, res: Response) => Promise<Response>;
   MakeCensus: (req: AuthRequest, res: Response) => Promise<Response>;
   UpdateCensus: (req: AuthRequest, res: Response) => Promise<Response>;
+  GetOneCensus: (req: AuthRequest, res: Response) => Promise<Response>;
 }

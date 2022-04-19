@@ -1,7 +1,13 @@
 import { Connect, Query } from "config";
 
-import { GetOneOrDeleteOne, UserModelUI, RegisterPayload, User } from "types";
-import { GetQueryColumns, InsertData } from "lib";
+import {
+  GetOneOrDeleteOne,
+  UserModelUI,
+  RegisterPayload,
+  User,
+  Update,
+} from "types";
+import { GetQueryColumns, InsertData, UpdateQuery } from "lib";
 
 export default class UserModel implements UserModelUI {
   public async getAll() {
@@ -36,5 +42,35 @@ export default class UserModel implements UserModelUI {
     const result = await Query(connection, query, data);
     connection.end();
     return result.insertId;
+  }
+
+  public async updateById(id: number | string, newData: Update) {
+    const connection = await Connect();
+    const query = UpdateQuery("user", { id }, newData);
+    const result = await Query(
+      connection,
+      query,
+      Object.values({
+        ...newData,
+        id,
+      })
+    );
+    connection.end();
+    return result;
+  }
+
+  public async serachIfExistForUpdate(
+    idToSearch: number | string,
+    params: Update
+  ) {
+    const connection = await Connect();
+    const query = GetQueryColumns("user", "SELECT", params);
+    const result = await Query(
+      connection,
+      query.concat(` AND id <>${idToSearch}`),
+      Object.values(params)
+    );
+    connection.end();
+    return result;
   }
 }
