@@ -4,6 +4,7 @@ import {
   SignRefreshToken,
   Authenticate,
   StaffOnly,
+  AdminOrBossOnly,
 } from "./auth";
 import {
   ValidateLogin,
@@ -32,4 +33,5 @@ export {
   ValidateCensus,
   ValidateLocation,
   ValidateNewUser,
+  AdminOrBossOnly,
 };

@@ -77,6 +77,13 @@ export interface ValidationResponse {
   valid: boolean;
 }
 
+export interface OfficialAdditionalInfoPayload {
+  active?: boolean;
+  boss: number | string;
+  sector: number | string;
+  official: number | string;
+}
+
 export interface AuthServiceUI {
   Register?: (
     payload: RegisterPayload

@@ -37,6 +37,7 @@ import {
   LocationModelUI,
   CensusModelUI,
   Census,
+  UserRole,
 } from "./models";
 import {
   AuthServiceUI,
@@ -53,6 +54,7 @@ import {
   CensusPayload,
   ErrorUI,
   ValidationResponse,
+  OfficialAdditionalInfoPayload,
 } from "./services";
 import { AuthRequest } from "./auth";
 
@@ -106,4 +108,6 @@ export {
   CensusRoutesUI,
   ErrorUI,
   ValidationResponse,
+  UserRole,
+  OfficialAdditionalInfoPayload,
 };

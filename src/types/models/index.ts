@@ -1,3 +1,5 @@
+import { OfficialAdditionalInfoPayload } from "types";
+
 interface TypeIdUI {
   id?: number;
   abbreviation: string;
@@ -86,7 +88,8 @@ export interface Census {
   updatedAt?: string;
 }
 
-interface UserRole {
+export interface UserRole {
+  id?: number | string;
   user_id: number;
   role_id: number;
 }
@@ -102,6 +105,10 @@ export interface GetOneOrDeleteOne {
 export interface TypeIdModelUI extends ModelUI<TypeIdUI> {}
 export interface UserModelUI extends ModelUI<User> {
   getOfficials?: () => Promise<User[]>;
+  addInfoAdditionalOfficial?: (
+    payload: OfficialAdditionalInfoPayload
+  ) => Promise<void>;
+  updateAdditionalInfo?: (data: Update, id: number | string) => Promise<void>;
 }
 export interface UserRolesModelUI extends ModelUI<UserRole> {
   asociate: (uid: number, roleId: number) => Promise<void>;

@@ -55,6 +55,22 @@ export const StaffOnly = (
   }
 };
 
+export const AdminOrBossOnly = (
+  req: AuthRequest,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    if (req.user?.role === "client" || req.user?.role === "official") {
+      return res.status(403).send("I'm sorry you haven't access");
+    }
+
+    next();
+  } catch (error) {
+    return res.status(403).send("I'm sorry you haven't access");
+  }
+};
+
 export const SignToken = (uid: number): string => {
   return jwt.sign({ uid }, SECRET_TOKEN as string, {
     expiresIn: "1m",
