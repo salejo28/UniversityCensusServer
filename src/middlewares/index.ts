@@ -5,7 +5,17 @@ import {
   Authenticate,
   StaffOnly,
 } from "./auth";
-import { ValidateLogin, ValidateRegister } from "./validations";
+import {
+  ValidateLogin,
+  ValidateRegister,
+  ValidateAnimal,
+  ValidateRace,
+  ValidateSector,
+  ValidateSpecie,
+  ValidateCensus,
+  ValidateLocation,
+  ValidateNewUser,
+} from "./validations";
 
 export {
   AuthenticateApiVerify,
@@ -15,4 +25,11 @@ export {
   StaffOnly,
   ValidateLogin,
   ValidateRegister,
+  ValidateAnimal,
+  ValidateRace,
+  ValidateSector,
+  ValidateSpecie,
+  ValidateCensus,
+  ValidateLocation,
+  ValidateNewUser,
 };

@@ -100,7 +100,9 @@ export interface GetOneOrDeleteOne {
 }
 // Gloabls Interfaces
 export interface TypeIdModelUI extends ModelUI<TypeIdUI> {}
-export interface UserModelUI extends ModelUI<User> {}
+export interface UserModelUI extends ModelUI<User> {
+  getOfficials?: () => Promise<User[]>;
+}
 export interface UserRolesModelUI extends ModelUI<UserRole> {
   asociate: (uid: number, roleId: number) => Promise<void>;
 }

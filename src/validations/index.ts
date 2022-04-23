@@ -6,6 +6,9 @@ import {
   SpeciePayload,
   RacePayload,
   AnimalPayload,
+  SectorPayload,
+  LocationPayload,
+  CensusPayload,
 } from "types";
 import ValidateString from "./validateString";
 
@@ -48,7 +51,7 @@ export const ValidateFormLogin = (data: LoginPayload): ValidationResponse => {
 
   return {
     errors,
-    valid: errors.path.length === 1,
+    valid: errors.path.length === 0,
   };
 };
 
@@ -63,9 +66,7 @@ export const ValidateFormRegister = (
   if (
     (!data.email.trim() &&
       !data.firstName.trim() &&
-      !data.middleName.trim() &&
       !data.surname.trim() &&
-      !data.lastName.trim() &&
       !data.password.trim() &&
       !data.idNumber.trim() &&
       !data.idType.trim()) ||
@@ -73,9 +74,7 @@ export const ValidateFormRegister = (
   ) {
     errors.path = [
       "firstName",
-      "middleName",
       "surname",
-      "lastName",
       "email",
       "idNumber",
       "idType",
@@ -89,18 +88,8 @@ export const ValidateFormRegister = (
     errors.message = messageEmptyField;
   }
 
-  if (!data.middleName || !data.middleName.trim()) {
-    errors.path = ["middleName"];
-    errors.message = messageEmptyField;
-  }
-
   if (!data.surname || !data.surname.trim()) {
     errors.path = ["surname"];
-    errors.message = messageEmptyField;
-  }
-
-  if (!data.lastName || !data.lastName.trim()) {
-    errors.path = ["lastName"];
     errors.message = messageEmptyField;
   }
 
@@ -171,6 +160,28 @@ export const ValidateFormRegister = (
   return {
     errors,
     valid: errors.path.length === 0,
+  };
+};
+
+export const ValidateFormNewUser = (
+  data: RegisterPayload,
+  role: number
+): ValidationResponse => {
+  const { errors, valid } = ValidateFormRegister(data);
+
+  if (!role || role === 0) {
+    return {
+      valid: false,
+      errors: {
+        path: ["role"],
+        message: messageEmptyField,
+      },
+    };
+  }
+
+  return {
+    errors,
+    valid,
   };
 };
 
@@ -295,5 +306,189 @@ export const ValidateFormAnimal = (data: AnimalPayload): ValidationResponse => {
   return {
     errors,
     valid: errors.path.length === 0,
+  };
+};
+
+export const ValidateFormSector = (data: SectorPayload): ValidationResponse => {
+  const errors: ErrorUI = {
+    path: [],
+    message: "",
+  };
+
+  const hasName = Object.prototype.hasOwnProperty.call(data, "name");
+  const hasIsNeighborhood = Object.prototype.hasOwnProperty.call(
+    data,
+    "isNeighborhood"
+  );
+  const hasIsSidewalk = Object.prototype.hasOwnProperty.call(
+    data,
+    "isSidewalk"
+  );
+  const hasStart = Object.prototype.hasOwnProperty.call(data, "start");
+  const hasEnd = Object.prototype.hasOwnProperty.call(data, "end");
+
+  if (
+    !data ||
+    (!data.name.trim() &&
+      !hasIsNeighborhood &&
+      !hasIsSidewalk === undefined &&
+      !hasStart === undefined &&
+      !hasEnd === undefined)
+  ) {
+    errors.path = ["name", "isNeighborhood", "isSidewalk", "start", "end"];
+    errors.message = messageEmptyField;
+  }
+
+  if (!hasName || !data.name.trim()) {
+    errors.path = ["name"];
+    errors.message = messageEmptyField;
+  }
+
+  if (!hasIsNeighborhood) {
+    errors.path = ["isNeighborhood"];
+    errors.message = messageEmptyField;
+  }
+
+  if (!hasStart) {
+    errors.path = ["start"];
+    errors.message = messageEmptyField;
+  }
+
+  if (!hasEnd) {
+    errors.path = ["end"];
+    errors.message = messageEmptyField;
+  }
+
+  const hasLatStart = Object.prototype.hasOwnProperty.call(data.start, "lat");
+  const hasLngStart = Object.prototype.hasOwnProperty.call(data.start, "lng");
+  if (!hasLatStart && !hasLngStart) {
+    errors.path = ["latStart", "lngStart"];
+    errors.message = "Latitude and Longitude start are required";
+  }
+
+  if (!hasLatStart) {
+    errors.path = ["latStart"];
+    errors.message = "Latitude start is required";
+  }
+
+  if (!hasLatStart) {
+    errors.path = ["latStart"];
+    errors.message = "Longitude start is required";
+  }
+
+  const hasLatEnd = Object.prototype.hasOwnProperty.call(data.end, "lat");
+  const hasLngEnd = Object.prototype.hasOwnProperty.call(data.end, "lng");
+  if (!hasLatEnd && !hasLngEnd) {
+    errors.path = ["latEnd", "lngEnd"];
+    errors.message = "Latituda and Longitude end are required";
+  }
+
+  if (!hasLatEnd) {
+    errors.path = ["latEnd"];
+    errors.message = "Latitude end is required";
+  }
+
+  if (!hasLngEnd) {
+    errors.path = ["lngEnd"];
+    errors.message = "Longitude end is required";
+  }
+
+  return {
+    errors,
+    valid: errors.path.length === 0,
+  };
+};
+
+export const ValidateFormLocation = (
+  data: LocationPayload
+): ValidationResponse => {
+  const errors: ErrorUI = {
+    path: [],
+    message: "",
+  };
+
+  if (
+    !data ||
+    (!data.geo &&
+      (!data.address || !data.address.trim()) &&
+      (!data.sector || data.sector === 0))
+  ) {
+    errors.path = ["geo", "address", "sector"];
+    errors.message = messageEmptyField;
+  }
+
+  if (!data.address || !data.address.trim()) {
+    errors.path = ["address"];
+    errors.message = messageEmptyField;
+  }
+
+  if (!data.sector || data.sector === 0) {
+    errors.path = ["sector"];
+    errors.message = messageEmptyField;
+  }
+
+  if (!data.geo) {
+    errors.path = ["geo"];
+    errors.message = messageEmptyField;
+  }
+
+  const hasLat = Object.prototype.hasOwnProperty.call(data.geo, "lat");
+  const hasLng = Object.prototype.hasOwnProperty.call(data.geo, "lng");
+
+  if (!hasLat && !hasLng) {
+    errors.path = ["geoLat", "geoLng"];
+    errors.message = messageEmptyField;
+  }
+
+  if (!hasLat) {
+    errors.path = ["geoLat"];
+    errors.message = messageEmptyField;
+  }
+
+  if (!hasLng) {
+    errors.path = ["geoLng"];
+    errors.message = messageEmptyField;
+  }
+
+  return {
+    valid: errors.path.length === 0,
+    errors,
+  };
+};
+
+export const ValidateFormCensus = (data: CensusPayload): ValidationResponse => {
+  const errors: ErrorUI = {
+    path: [],
+    message: "",
+  };
+
+  if (
+    !data ||
+    ((!data.pet || data.pet === 0) &&
+      (!data.owner || data.owner === 0) &&
+      (!data.location || data.location === 0))
+  ) {
+    errors.path = ["pet", "owner", "location"];
+    errors.message = messageEmptyField;
+  }
+
+  if (!data.pet || data.pet === 0) {
+    errors.path = ["pet"];
+    errors.message = messageEmptyField;
+  }
+
+  if (!data.owner || data.owner === 0) {
+    errors.path = ["owner"];
+    errors.message = messageEmptyField;
+  }
+
+  if (!data.location || data.location === 0) {
+    errors.path = ["location"];
+    errors.message = messageEmptyField;
+  }
+
+  return {
+    valid: errors.path.length === 0,
+    errors,
   };
 };

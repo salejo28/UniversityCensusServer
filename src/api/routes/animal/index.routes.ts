@@ -1,7 +1,7 @@
 import { Router } from "express";
 
 import { AnimalControllers } from "controllers";
-import { Authenticate, StaffOnly } from "middlewares";
+import { Authenticate, StaffOnly, ValidateAnimal } from "middlewares";
 import { AnimalRoutesUI } from "types";
 
 class AnimalRoutes implements AnimalRoutesUI {
@@ -46,7 +46,7 @@ class AnimalRoutes implements AnimalRoutesUI {
   createAnimal() {
     this.router.post(
       "/",
-      [Authenticate, StaffOnly],
+      [Authenticate, StaffOnly, ValidateAnimal],
       this.controllers.CreateAnimal.bind(this.controllers)
     );
   }

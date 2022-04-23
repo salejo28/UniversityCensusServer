@@ -2,7 +2,7 @@ import { Router } from "express";
 
 import { SpecieControllers } from "controllers";
 import { SpecieRoutesUI } from "types";
-import { Authenticate, StaffOnly } from "middlewares";
+import { Authenticate, StaffOnly, ValidateSpecie } from "middlewares";
 
 class SpecieRoutes implements SpecieRoutesUI {
   public router: Router;
@@ -47,7 +47,7 @@ class SpecieRoutes implements SpecieRoutesUI {
   createSpecie() {
     this.router.post(
       "/",
-      [Authenticate, StaffOnly],
+      [Authenticate, StaffOnly, ValidateSpecie],
       this.controllers.CreateSpecie.bind(this.controllers)
     );
   }

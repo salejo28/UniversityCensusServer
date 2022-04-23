@@ -1,7 +1,7 @@
 import { Router } from "express";
 
 import { LocationControllers } from "controllers";
-import { Authenticate } from "middlewares";
+import { Authenticate, ValidateLocation } from "middlewares";
 import { LocationRoutesUI } from "types";
 
 class LocationRoutes implements LocationRoutesUI {
@@ -28,7 +28,7 @@ class LocationRoutes implements LocationRoutesUI {
   createLocation() {
     this.router.post(
       "/",
-      [Authenticate],
+      [Authenticate, ValidateLocation],
       this.controllers.CreateLocation.bind(this.controllers)
     );
   }

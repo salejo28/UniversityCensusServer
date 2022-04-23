@@ -17,6 +17,14 @@ export interface TypeIdControllersUI {
 export interface UserControllerUI {
   GetUser: (req: Request, res: Response) => Promise<Response>;
   CreateUser: (req: AuthRequest, res: Response) => Promise<Response>;
+  UpdateBirthDate: (req: AuthRequest, res: Response) => Promise<Response>;
+  UploadFile: (req: AuthRequest, res: Response) => Promise<Response>;
+  ListOfficials: (req: AuthRequest, res: Response) => Promise<Response>;
+  UpdateInfoUser: (req: AuthRequest, res: Response) => Promise<Response>;
+  AddAdditionalInfoOfficial: (
+    req: AuthRequest,
+    res: Response
+  ) => Promise<Response>;
 }
 
 export interface SpecieControllersUI {

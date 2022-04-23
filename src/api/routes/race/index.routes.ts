@@ -1,7 +1,7 @@
 import { Router } from "express";
 
 import { RaceControllers } from "controllers";
-import { Authenticate, StaffOnly } from "middlewares";
+import { Authenticate, StaffOnly, ValidateRace } from "middlewares";
 
 class RaceRoutes {
   public router: Router;
@@ -46,7 +46,7 @@ class RaceRoutes {
   createRace() {
     this.router.post(
       "/",
-      [Authenticate, StaffOnly],
+      [Authenticate, StaffOnly, ValidateRace],
       this.controllers.CreateRace.bind(this.controllers)
     );
   }

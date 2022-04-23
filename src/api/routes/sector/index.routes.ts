@@ -1,7 +1,7 @@
 import { Router } from "express";
 
 import { SectorControllers } from "controllers";
-import { Authenticate, StaffOnly } from "middlewares";
+import { Authenticate, StaffOnly, ValidateSector } from "middlewares";
 import { SectorRoutesUI } from "types";
 
 class SectorRoutes implements SectorRoutesUI {
@@ -48,7 +48,7 @@ class SectorRoutes implements SectorRoutesUI {
   createSector() {
     this.router.post(
       "/",
-      [Authenticate, StaffOnly],
+      [Authenticate, StaffOnly, ValidateSector],
       this.controllers.CreateSector.bind(this.controllers)
     );
   }

@@ -2,7 +2,7 @@ import { Router } from "express";
 
 import { CensusControllers } from "controllers";
 import { CensusRoutesUI } from "types";
-import { Authenticate, StaffOnly } from "app/middlewares";
+import { Authenticate, StaffOnly, ValidateCensus } from "middlewares";
 
 class CensusRoutes implements CensusRoutesUI {
   public router: Router;
@@ -22,7 +22,7 @@ class CensusRoutes implements CensusRoutesUI {
   getCensus() {
     this.router.get(
       "/",
-      [Authenticate, StaffOnly],
+      [Authenticate, StaffOnly, ValidateCensus],
       this.controllers.GetCensus.bind(this.controllers)
     );
   }

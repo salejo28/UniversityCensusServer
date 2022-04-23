@@ -2,7 +2,7 @@ import { Router } from "express";
 
 import { UserControllers } from "controllers";
 import { UserRoutesUI } from "types";
-import { Authenticate, StaffOnly } from "middlewares";
+import { Authenticate, StaffOnly, ValidateNewUser } from "middlewares";
 
 class UserRoutes implements UserRoutesUI {
   public router: Router;
@@ -27,7 +27,7 @@ class UserRoutes implements UserRoutesUI {
   createUser() {
     this.router.post(
       "/",
-      [Authenticate, StaffOnly],
+      [Authenticate, StaffOnly, ValidateNewUser],
       this.controllers.CreateUser.bind(this.controllers)
     );
   }

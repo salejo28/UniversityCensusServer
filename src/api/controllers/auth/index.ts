@@ -63,9 +63,13 @@ export default class AuthControllers implements AuthControllersUI {
     if (!success) {
       return res.json({
         success,
-        error:
-          path === "email" ? "Email already exists" : "Identity already exists",
-        path,
+        errors: {
+          path: [path],
+          meessage:
+            path === "email"
+              ? "Email already exists"
+              : "Identity already exists",
+        },
       });
     }
     const token = SignToken(id);
