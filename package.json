@@ -8,7 +8,7 @@
     "lint.fix": "eslint . --ext .ts —-fix",
     "dev": "ts-node -r tsconfig-paths/register index.ts",
     "start": "set NODE_ENV=production && node dist/",
-    "build": "tsc -p .",
+    "build": "set NODE_PATH=dist/ && tsc -p . && npx tsc-alias",
     "start:dev:w": "set NODE_ENV=development && nodemon index.ts",
     "start:prod:w": "set NODE_ENV=production && nodemon index.ts",
     "start:dev": "NODE_ENV=development && nodemon index.ts",
