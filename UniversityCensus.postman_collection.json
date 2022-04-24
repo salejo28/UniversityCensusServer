@@ -1,0 +1,1525 @@
+{
+	"info": {
+		"_postman_id": "9cee8e87-331a-4347-86d3-083cfbd671f3",
+		"name": "UniversityCensus",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@gmail.com\",\n    \"password\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"santiago@gmail.com\",\n    \"firstName\": \"Santiago\",\n    \"middleName\": \"Alejandro\",\n    \"surname\": \"Ruiz\",\n    \"lastName\": \"Rojas\",\n    \"idType\": \"CEDULA DE CIUDADANIA\",\n    \"idNumber\": \"123456789\",\n    \"password\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/auth/refresh-token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"auth",
+								"refresh-token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TypesId",
+			"item": [
+				{
+					"name": "Get All Types Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/typeIds/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"typeIds",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one Type id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/typeIds/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"typeIds",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get User by Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/user/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"official@gmail.com\",\n    \"firstName\": \"User\",\n    \"middleName\": \"Official\",\n    \"surname\": \"Ruiz\",\n    \"lastName\": \"Rojas\",\n    \"idType\": \"CEDULA DE CIUDADANIA\",\n    \"idNumber\": \"9875623\",\n    \"password\": \"password\",\n    \"role\": 3\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/user/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update born date",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bornDate\": \"2003/04/28\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/user/bornDate/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"user",
+								"bornDate",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Officials",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/user/officials/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"user",
+								"officials",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"Santiago\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/user/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add additional info to official",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"boss\": 2,\n    \"sector\": 1,\n    \"official\": 3,\n    \"active\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/user/additional-info",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"user",
+								"additional-info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update additional info",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sector\": 2\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/user/additional-info/update/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"user",
+								"additional-info",
+								"update",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Image Profile",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/santiagoruiz/Pictures/Screen Shot 2022-04-11 at 11.31.38 AM.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/user/image/upload/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"user",
+								"image",
+								"upload",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/user/profile/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"user",
+								"profile",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Specie",
+			"item": [
+				{
+					"name": "Create Specie",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"specie 2\",\n    \"isPet\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/specie/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"specie",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Species",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/specie/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"specie",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one specie",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/specie/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"specie",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update specie",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"specie 1 updated\",\n    \"isPet\": false\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/specie/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"specie",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Specie",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/specie/search?keyword=specie 1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"specie",
+								"search"
+							],
+							"query": [
+								{
+									"key": "keyword",
+									"value": "specie 1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Specie",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/specie/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"specie",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Race",
+			"item": [
+				{
+					"name": "Get Races",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/race/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"race",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Race",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"race 2\",\n    \"dangerous\": false,\n    \"specie\": 1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/race/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"race",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Race",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/race/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"race",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Race",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"race 1 updated\",\n    \"dangerous\": false,\n    \"specie\": 1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/race/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"race",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Request",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/race/2/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"race",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Animal",
+			"item": [
+				{
+					"name": "Get Animals",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/animal/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"animal",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Animal",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/animal/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"animal",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Animals By Owner",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/animal/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"animal",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Animal",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Manchas\",\n    \"bornDate\": \"2008/02/15\",\n    \"owner\": 1,\n    \"race\": 1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/animal/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"animal",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Animal",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Manchas\",\n    \"bornDate\": \"2008/02/16\",\n    \"owner\": 1,\n    \"race\": 1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/animal/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"animal",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sector",
+			"item": [
+				{
+					"name": "Get Sectors",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/sector/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"sector",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Sector",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/sector/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"sector",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get sector assigned",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/sector/assigned/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"sector",
+								"assigned",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Sector",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"sector 2\",\n    \"isNeighborhood\": true,\n    \"isSidewalk\": false,\n    \"start\": {\n        \"lat\": 4.67217,\n        \"lng\": -74.718927\n    },\n    \"end\": {\n        \"lat\": 4.21982,\n        \"lng\": -74.28191\n    }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/sector/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"sector",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Assign Sector",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"official\": 1,\n    \"sector\": 1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/sector/assign/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"sector",
+								"assign",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unassign sector",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/sector/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"sector",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Sector",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"sector 1 updated\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/sector/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"sector",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Location",
+			"item": [
+				{
+					"name": "Get Location",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/location",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"location"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Location",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"geo\": {\n        \"lat\": 4.21987,\n        \"lng\": -74.28917\n    },\n    \"address\": \"Calle 10 #12-41\",\n    \"sector\": 1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/location",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"location"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Location",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"geo\": {\n        \"lat\": 4.21987,\n        \"lng\": -74.28917\n    },\n    \"address\": \"Calle 10 #12-41\",\n    \"sector\": 1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/location/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"location",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Census",
+			"item": [
+				{
+					"name": "Get Census",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/census",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"census"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "My report",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/census/my-report/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"census",
+								"my-report",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Make Census",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pet\": 1,\n    \"owner\": 1,\n    \"location\": 1,\n    \"description\": \"Some description\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/census/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"census",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Report",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"date\": \"2022/04/18 22:00:00\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/census/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"census",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one census",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "0yk3m5CJIdRvRaijY0Gv0yk3m5CJIdRvRaijY0GvErrZbhfRUFEHbM5W9Mbz",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/census/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"census",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "apikey",
+				"apikey": [
+					{
+						"key": "value",
+						"value": "",
+						"type": "string"
+					},
+					{
+						"key": "key",
+						"value": "",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}

@@ -15,6 +15,13 @@ export interface TypeIdRoutesUI {
 export interface UserRoutesUI {
   getUser: () => void;
   createUser: () => void;
+  updateBornDate: () => void;
+  listOfficials: () => void;
+  updateInfoUser: () => void;
+  addAdditionalInfoOfficial: () => void;
+  updateAdditionalInfoOfficial: () => void;
+  uploadImageProfile: () => void;
+  profile: () => void;
 }
 
 export interface SpecieRoutesUI {

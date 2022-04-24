@@ -17,6 +17,7 @@ import {
   ValidateLocation,
   ValidateNewUser,
 } from "./validations";
+import { UploadFile } from "./cloud";
 
 export {
   AuthenticateApiVerify,
@@ -34,4 +35,5 @@ export {
   ValidateLocation,
   ValidateNewUser,
   AdminOrBossOnly,
+  UploadFile,
 };

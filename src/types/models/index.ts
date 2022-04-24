@@ -95,7 +95,7 @@ export interface UserRole {
 }
 
 export interface Update {
-  [key: string]: string | number | boolean;
+  [key: string]: string | number | boolean | Date;
 }
 
 export interface GetOneOrDeleteOne {

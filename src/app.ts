@@ -6,6 +6,7 @@ import hpp from "hpp"; // This protects against HTTP Parameter Pollution attacks
 /* import csurf from "csurf"; */ // This protects against Cross-site request forgery. This needs to be used after our cookie-session connect.
 import limiter from "express-rate-limit";
 import CookieParser from "cookie-parser";
+import multer from "multer";
 
 import { SECRET_TOKEN_SESSION_COOKIE } from "keys";
 import { methods } from "appConstants";
@@ -24,6 +25,7 @@ import {
   CensusRoutes,
 } from "routes";
 import { AddUserAdmin } from "auto";
+import path from "path";
 
 export default class App {
   private app: Application;
@@ -68,6 +70,13 @@ export default class App {
       })
     );
     this.app.use("*", AuthenticateApiVerify);
+    const storage = multer.diskStorage({
+      destination: path.join(__dirname, "tmp"),
+      filename: (req, file, cb) => {
+        cb(null, new Date().getTime() + path.extname(file.originalname));
+      },
+    });
+    this.app.use(multer({ storage }).single("file"));
   }
 
   private Routes() {

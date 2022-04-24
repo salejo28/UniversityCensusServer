@@ -31,7 +31,7 @@ export default class UserModel implements UserModelUI {
     const connection = await Connect();
     const result = await Query(
       connection,
-      "SELECT user.id, user.firstName, user.middleName, user.surname, user.lastName, user.email, user.idType, user.idNumber, user.cellphone, user.imgUri, user.bornDate, user.active, user.createdAt, roles.name AS role FROM user INNER JOIN users_roles ON user.id = users_roles.user_id INNER JOIN roles ON roles.id = users_roles.role_id WHERE user.id = ?",
+      "SELECT user.id, user.firstName, user.middleName, user.surname, user.lastName, user.email, user.idType, user.idNumber, user.cellphone, user.imgUri, DATE_FORMAT(user.bornDate, '%Y/%m/%d') AS bornDate, user.active, user.createdAt, roles.name AS role FROM user INNER JOIN users_roles ON user.id = users_roles.user_id INNER JOIN roles ON roles.id = users_roles.role_id WHERE user.id = ?",
       id
     );
     connection.end();
@@ -86,7 +86,7 @@ export default class UserModel implements UserModelUI {
       users_roles.map(async (user_role: UserRole) => {
         const result = await Query(
           connection,
-          "SELECT user.id, user.firstName, user.middleName, user.surname, user.lastName, user.email, user.idType, user.idNumber, user.cellphone, user.imgUri, user.bornDate, user.active, user.createdAt, roles.name AS role, info.active AS active, CONCAT_WS(' ', boss.firstName, boss.middleName, boss.surname, boss.lastName) AS bossName, boss.id AS bossId, sector.name AS sectorName, sector.id AS sectorId FROM user INNER JOIN users_roles ON user.id = users_roles.user_id INNER JOIN roles ON roles.id = users_roles.role_id INNER JOIN aditional_info_official AS info ON info.official INNER JOIN user AS boss ON boss.id = info.boss INNER JOIN sector ON sector.id = info.sector = user.id WHERE user.id = ?",
+          "SELECT user.id, user.firstName, user.middleName, user.surname, user.lastName, user.email, user.idType, user.idNumber, user.cellphone, user.imgUri, user.bornDate, user.active, user.createdAt, roles.name AS role, info.active AS active, CONCAT_WS(' ', boss.firstName, boss.middleName, boss.surname, boss.lastName) AS bossName, boss.id AS bossId, sector.name AS sectorName, sector.id AS sectorId FROM user INNER JOIN users_roles ON user.id = users_roles.user_id LEFT JOIN roles ON roles.id = users_roles.role_id LEFT JOIN aditional_info_official AS info ON info.official LEFT JOIN user AS boss ON boss.id = info.boss LEFT JOIN sector ON sector.id = info.sector WHERE user.id = ?",
           user_role.user_id
         );
         return result[0];

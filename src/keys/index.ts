@@ -16,3 +16,6 @@ export const SECRET_TOKEN_SESSION_COOKIE =
 export const SECRET_TOKEN = process.env.SECRET_TOKEN;
 export const SECRET_REFRESH_TOKEN = process.env.SECRET_REFRESH_TOKEN;
 export const SECRET_KEY_CRYPTO = process.env.SECRET_KEY_CRYPTO;
+export const CLOUDINARY_NAME = process.env.CLOUDINARY_NAME;
+export const CLOUDINARY_API_KEY = process.env.CLOUDINARY_API_KEY;
+export const CLOUDINARY_API_SECRET = process.env.CLOUDINARY_API_SECRET;

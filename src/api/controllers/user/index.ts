@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import { UserModel } from "models";
 import { AuthRequest, UserControllerUI } from "types";
 import { UserService } from "services";
+import { UploadFile } from "middlewares";
 
 export default class UserControllers implements UserControllerUI {
   private readonly userModel;
@@ -64,7 +65,7 @@ export default class UserControllers implements UserControllerUI {
   }
 
   public async UpdateBirthDate(req: AuthRequest, res: Response) {
-    const bornDate = req.body.birthDate;
+    const bornDate = req.body.bornDate;
     const date = new Date(bornDate);
     const now = new Date();
     const difference = now.getTime() - date.getTime();
@@ -79,12 +80,17 @@ export default class UserControllers implements UserControllerUI {
         success: false,
       });
     }
-    await this.service.UpdateUser({ bornDate }, req.params.uid);
+    await this.service.UpdateUser(
+      { bornDate: new Date(bornDate) },
+      req.params.uid
+    );
     return res.json({ message: "Born date updated", success: true });
   }
 
   public async UploadFile(req: AuthRequest, res: Response) {
-    return res.json({ message: "uploaded" });
+    const imgUri = await UploadFile(req.file?.path as string);
+    await this.userModel.updateById(req.params.uid, { imgUri });
+    return res.json({ message: "Image profile uploaded" });
   }
 
   public async ListOfficials(req: AuthRequest, res: Response) {
@@ -98,7 +104,7 @@ export default class UserControllers implements UserControllerUI {
       return res.json({
         success: false,
         errors: {
-          path: ["id"],
+          path: ["identity"],
           message: "You can't update id type or id number",
         },
       });
@@ -132,6 +138,21 @@ export default class UserControllers implements UserControllerUI {
   }
 
   public async UpdateAdditionalInfoOfficial(req: AuthRequest, res: Response) {
-    return res.json("Som");
+    if (req.body.official) {
+      return res.json({
+        success: false,
+        errors: {
+          path: ["official"],
+          message: "Official can't be changed",
+        },
+      });
+    }
+    await this.userModel.updateAdditionalInfo(req.body, req.params.aid);
+    return res.json({ success: true, message: "Additional info updated" });
+  }
+
+  public async Profile(req: AuthRequest, res: Response) {
+    const user = await this.userModel.getById(req.user?.id as number);
+    return res.json(user);
   }
 }
