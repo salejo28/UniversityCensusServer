@@ -1,7 +1,11 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 
-import { SECRET_REFRESH_TOKEN, SECRET_TOKEN } from "keys";
+import {
+  SECRET_REFRESH_TOKEN,
+  SECRET_TOKEN,
+  SECRET_TOKEN_AUTHORIZATION,
+} from "keys";
 import { AuthRequest, User } from "types";
 import { UserModel } from "models";
 
@@ -11,7 +15,11 @@ export const AuthenticateApiVerify = (
   next: NextFunction
 ) => {
   const authorization = req.headers["authorization"];
-  if (!authorization || !authorization.trim()) {
+  if (
+    !authorization ||
+    !authorization.trim() ||
+    authorization !== SECRET_TOKEN_AUTHORIZATION
+  ) {
     return res.status(401).send("Unauthorized");
   }
 
