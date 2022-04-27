@@ -11,6 +11,7 @@ import {
   CensusPayload,
 } from "types";
 import ValidateString from "./validateString";
+import { ValidFormatDate } from "./date";
 
 const messageEmptyField = "This field is required";
 
@@ -293,7 +294,7 @@ export const ValidateFormAnimal = (data: AnimalPayload): ValidationResponse => {
     errors.message = messageEmptyField;
   }
 
-  if (!ValidateString(data.bornDate)) {
+  if (!ValidFormatDate(data.bornDate)) {
     errors.path = ["bornDate"];
     errors.message = "Born date must be a date";
   }
