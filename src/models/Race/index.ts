@@ -22,7 +22,7 @@ export default class RaceModel implements RaceModelUI {
       id
     );
     connection.end();
-    return result;
+    return result[0];
   }
 
   public async getOne(params: GetOneOrDeleteOne) {

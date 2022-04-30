@@ -2,7 +2,12 @@ import { Router } from "express";
 
 import { CensusControllers } from "controllers";
 import { CensusRoutesUI } from "types";
-import { Authenticate, StaffOnly, ValidateCensus } from "middlewares";
+import {
+  AdminOrBossOnly,
+  Authenticate,
+  StaffOnly,
+  ValidateCensus,
+} from "middlewares";
 
 class CensusRoutes implements CensusRoutesUI {
   public router: Router;
@@ -17,13 +22,22 @@ class CensusRoutes implements CensusRoutesUI {
     this.makeCensus();
     this.updateCensus();
     this.getOneCensus();
+    this.report();
   }
 
   getCensus() {
     this.router.get(
       "/",
-      [Authenticate, StaffOnly, ValidateCensus],
+      [Authenticate, StaffOnly],
       this.controllers.GetCensus.bind(this.controllers)
+    );
+  }
+
+  report() {
+    this.router.post(
+      "/report",
+      [Authenticate, AdminOrBossOnly],
+      this.controllers.Report.bind(this.controllers)
     );
   }
 
@@ -46,7 +60,7 @@ class CensusRoutes implements CensusRoutesUI {
   makeCensus() {
     this.router.post(
       "/",
-      [Authenticate, StaffOnly],
+      [Authenticate, StaffOnly, ValidateCensus],
       this.controllers.MakeCensus.bind(this.controllers)
     );
   }

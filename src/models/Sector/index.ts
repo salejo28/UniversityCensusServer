@@ -12,7 +12,10 @@ import {
 export default class SectorModel implements SectorModelUI {
   public async getAll() {
     const connection = await Connect();
-    const result = await Query(connection, "SELECT * FROM sector");
+    const result = await Query(
+      connection,
+      "SELECT sector.id, sector.name, sector.isNeighborhood, sector.isSidewalk, sector.start, sector.end, sector.createdAt, CONCAT_WS(' ', official.firstName, official.middleName, official.surname, official.lastName) as official, official.id as officialId FROM sector LEFT JOIN user as official ON official.id = sector.official"
+    );
     connection.end();
     return result;
   }
@@ -21,7 +24,7 @@ export default class SectorModel implements SectorModelUI {
     const connection = await Connect();
     const result = await Query(
       connection,
-      "SELECT sector.*, user.firstName, user.middleName, user.surname, user.lastName FROM sector INNER JOIN user ON user.id = sector.official"
+      "SELECT sector.id, sector.name, sector.isNeighborhood, sector.isSidewalk, sector.start, sector.end, sector.createdAt, CONCAT_WS(' ', official.firstName, official.middleName, official.surname, official.lastName) as official, official.id as officialId FROM sector INNER JOIN user as official ON official.id = sector.official"
     );
     connection.end();
     return result;
@@ -39,7 +42,7 @@ export default class SectorModel implements SectorModelUI {
     const connection = await Connect();
     const result = await Query(
       connection,
-      "SELECT sector.*, user.firstName, user.middleName, user.surname, user.lastName FROM sector INNER JOIN user ON user.id = sector.official WHERE sector.id = ?",
+      "SELECT sector.id, sector.name, sector.isNeighborhood, sector.isSidewalk, sector.start, sector.end, sector.createdAt, CONCAT_WS(' ', official.firstName, official.middleName, official.surname, official.lastName) as official, official.id as officialId FROM sector LEFT JOIN user as official ON official.id = sector.official WHERE sector.id = ?",
       id
     );
     connection.end();

@@ -17,7 +17,8 @@ export default class UserControllers implements UserControllerUI {
   public async GetUser(req: Request, res: Response) {
     const user = await this.userModel.getById(req.params.uid);
     return res.json({
-      user,
+      ...user,
+      active: (user?.active as number) === 0 ? false : true,
     });
   }
 
@@ -95,7 +96,14 @@ export default class UserControllers implements UserControllerUI {
 
   public async ListOfficials(req: AuthRequest, res: Response) {
     const officials = await this.userModel.getOfficials();
-    return res.json(officials);
+    return res.json(
+      officials.map((official) => {
+        return {
+          ...official,
+          active: official.active === 0 ? false : true,
+        };
+      })
+    );
   }
 
   public async UpdateInfoUser(req: AuthRequest, res: Response) {
@@ -153,6 +161,9 @@ export default class UserControllers implements UserControllerUI {
 
   public async Profile(req: AuthRequest, res: Response) {
     const user = await this.userModel.getById(req.user?.id as number);
-    return res.json(user);
+    return res.json({
+      ...user,
+      active: user?.active === 0 ? false : true,
+    });
   }
 }

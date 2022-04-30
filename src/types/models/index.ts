@@ -19,7 +19,7 @@ export interface User {
   imgUri?: string;
   bornDate?: string;
   password: string;
-  active?: boolean;
+  active?: boolean | number;
   createdAt?: Date;
   updatedAt?: Date;
   role?: string;
@@ -142,6 +142,12 @@ export interface LocationModelUI extends ModelUI<Location> {
 
 export interface CensusModelUI extends ModelUI<Census> {
   getReportByOfficial: (idOfficia: number | string) => Promise<Census[]>;
+  getReport: (
+    dateInit: string,
+    sector: number | string,
+    dateEnd?: string
+  ) => Promise<Census[]>;
+  existCensusWithSameAnimal: (animal: number | string) => Promise<boolean>;
 }
 
 export interface ModelUI<T> {

@@ -6,7 +6,10 @@ import { GetQueryColumns, InsertData, UpdateQuery } from "lib";
 export default class AnimalModel implements AnimalModelUI {
   public async getAll() {
     const connection = await Connect();
-    const result = await Query(connection, "SELECT * FROM animal");
+    const result = await Query(
+      connection,
+      "SELECT animal.id, animal.name, DATE_FORMAT(animal.bornDate, '%Y/%m/%d') AS bornDate, animal.createdAt, CONCAT_WS(' ', owner.firstName, owner.middleName, owner.surname, owner.lastName) as owner, owner.id AS ownerId, race.name AS race, race.id AS raceId FROM animal INNER JOIN user as owner ON animal.owner = owner.id INNER JOIN race ON race.id = animal.race"
+    );
     connection.end();
     return result;
   }
@@ -23,7 +26,7 @@ export default class AnimalModel implements AnimalModelUI {
     const connection = await Connect();
     const result = await Query(
       connection,
-      "SELECT animal.id, animal.name, animal.bornDate, animal.createdAt, animal.updatedAt, race.name AS race, user.firstName, user.middleName, user.surname, user.lastName FROM animal INNER JOIN user ON user.id = animal.owner INNER JOIN race ON race.id = animal.race WHERE animal.id = ?",
+      "SELECT animal.id, animal.name, DATE_FORMAT(animal.bornDate, '%Y/%m/%d') AS bornDate, animal.createdAt, animal.updatedAt, race.name AS race, CONCAT_WS(' ', owner.firstName, owner.middleName, owner.surname, owner.lastName) as owner, owner.id AS ownerId, race.name AS race, race.id AS raceId FROM animal INNER JOIN user as owner ON owner.id = animal.owner INNER JOIN race ON race.id = animal.race WHERE animal.id = ?",
       id
     );
     connection.end();
@@ -34,7 +37,7 @@ export default class AnimalModel implements AnimalModelUI {
     const connection = await Connect();
     const result = await Query(
       connection,
-      "SELECT animal.id, animal.name, animal.bornDate, animal.createdAt, animal.updatedAt, race.name AS race, user.firstName, user.middleName, user.surname, user.lastName FROM animal INNER JOIN user ON user.id = animal.owner INNER JOIN race ON race.id = animal.race WHERE animal.owner = ?",
+      "SELECT animal.id, animal.name, DATE_FORMAT(animal.bornDate, '%Y/%m/%d') AS bornDate, animal.createdAt, animal.updatedAt, race.name AS race, CONCAT_WS(' ', owner.firstName, owner.middleName, owner.surname, owner.lastName) as owner, owner.id AS ownerId, race.name AS race, race.id AS raceId FROM animal INNER JOIN user as owner ON owner.id = animal.owner INNER JOIN race ON race.id = animal.race WHERE animal.owner = ?",
       owner
     );
     connection.end();
