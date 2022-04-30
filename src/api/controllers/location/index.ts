@@ -12,7 +12,10 @@ export default class LocationControllers implements LocationControllersUI {
 
   public async GetLocation(req: AuthRequest, res: Response) {
     const location = await this.model.getOne({ user: req.user?.id as number });
-    return res.json(location);
+    return res.json({
+      ...location,
+      geo: JSON.parse(location?.geo),
+    });
   }
 
   public async CreateLocation(req: AuthRequest, res: Response) {
