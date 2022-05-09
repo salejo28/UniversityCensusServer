@@ -22,7 +22,7 @@ export default class LocationModel implements LocationModelUI {
   public async getOne(params: GetOneOrDeleteOne) {
     const connection = await Connect();
     const query =
-      "SELECT location.id, location.address, location.geo, location.createdAt, location.updatedAt, CONCAT_WS(' ', user.firstName, user.middleName, user.surname, user.lastName) as user, user.id as userId, sector.name as sector, sector.id as sectorId FROM location INNER JOIN user ON user.id = location.id INNER JOIN sector ON sector.id = location.sector WHERE location.user = ?";
+      "SELECT location.id, location.address, location.geo, location.createdAt, location.updatedAt, CONCAT_WS(' ', user.firstName, user.middleName, user.surname, user.lastName) as user, user.id as userId, sector.name as sector, sector.id as sectorId FROM location INNER JOIN user ON user.id = location.user INNER JOIN sector ON sector.id = location.sector WHERE location.user = ?";
     const result = await Query(connection, query, Object.values(params));
     connection.end();
     return result[0];
