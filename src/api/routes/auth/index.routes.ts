@@ -15,6 +15,7 @@ class AuthRoutes implements AuthRoutesUI {
     this.register();
     this.login();
     this.refrestToken();
+    this.logout();
   }
 
   register() {
@@ -38,6 +39,10 @@ class AuthRoutes implements AuthRoutesUI {
       "/refresh-token",
       this.controllers.RefreshToken.bind(this.controllers)
     );
+  }
+
+  logout() {
+    this.router.post("/logout", this.controllers.Logout.bind(this.controllers));
   }
 }
 

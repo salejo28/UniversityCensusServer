@@ -2,6 +2,7 @@ export interface AuthRoutesUI {
   register: () => void;
   login: () => void;
   refrestToken: () => void;
+  logout: () => void;
 }
 
 export interface TypeIdRoutesUI {

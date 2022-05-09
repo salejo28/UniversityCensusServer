@@ -4,6 +4,7 @@ export interface AuthControllersUI {
   Login: (req: Request, res: Response) => Promise<Response>;
   Register: (req: Request, res: Response) => Promise<Response>;
   RefreshToken: (req: Request, res: Response) => Promise<Response>;
+  Logout: (req: Request, res: Response) => Promise<Response>;
 }
 
 export interface TypeIdControllersUI {

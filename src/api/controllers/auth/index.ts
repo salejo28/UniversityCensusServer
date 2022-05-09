@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
 
 import { PRODUCTION, SECRET_REFRESH_TOKEN } from "keys";
-import { AuthControllersUI } from "types";
+import { AuthControllersUI, AuthRequest } from "types";
 import { AuthServices } from "services";
 import { SignRefreshToken, SignToken } from "middlewares";
 
@@ -120,7 +120,14 @@ export default class AuthControllers implements AuthControllersUI {
         scucess: true,
       });
     } catch (error) {
+      console.error("Error refresh token", error);
       return res.status(403).send("Unauthorized");
     }
+  }
+
+  async Logout(req: AuthRequest, res: Response) {
+    return res.clearCookie("x-refresh-token").clearCookie("x-token").json({
+      success: true,
+    });
   }
 }
