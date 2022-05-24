@@ -1,5 +1,7 @@
 -- DB NAME PetCensus
+CREATE DATABASE petcensus;
 
+use petcensus;
 -- Table User
 CREATE TABLE user(
   id INT(11) NOT NULL,

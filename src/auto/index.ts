@@ -11,7 +11,7 @@ export const AddUserAdmin = async () => {
       email: "admin@admin.com",
       idType: "Cedula de Ciudadania",
       idNumber: "123456789",
-      password: "qwerty",
+      password: "password",
     };
     const existUser = await service.GetUserByEmail(user.email);
     if (!existUser) {
