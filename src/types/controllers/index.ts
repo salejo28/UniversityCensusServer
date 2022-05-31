@@ -31,6 +31,7 @@ export interface UserControllerUI {
     res: Response
   ) => Promise<Response>;
   Profile: (req: AuthRequest, res: Response) => Promise<Response>;
+  Search?: (req: AuthRequest, res: Response) => Promise<Response>;
 }
 
 export interface SpecieControllersUI {
@@ -72,6 +73,7 @@ export interface SectorControllersUI {
 export interface LocationControllersUI {
   GetLocations?: (req: AuthRequest, res: Response) => Promise<Response>;
   GetLocation: (req: AuthRequest, res: Response) => Promise<Response>;
+  GetByClient?: (req: AuthRequest, res: Response) => Promise<Response>;
   CreateLocation: (req: AuthRequest, res: Response) => Promise<Response>;
   UpdateLocation: (req: AuthRequest, res: Response) => Promise<Response>;
 }

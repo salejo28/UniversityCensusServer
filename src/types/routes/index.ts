@@ -23,6 +23,7 @@ export interface UserRoutesUI {
   updateAdditionalInfoOfficial: () => void;
   uploadImageProfile: () => void;
   profile: () => void;
+  search?: () => void;
 }
 
 export interface SpecieRoutesUI {
@@ -64,6 +65,7 @@ export interface LocationRoutesUI {
   getLocation: () => void;
   createLocation: () => void;
   updateLocation: () => void;
+  getByClient?: () => void;
 }
 
 export interface CensusRoutesUI {

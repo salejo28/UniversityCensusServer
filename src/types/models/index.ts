@@ -109,6 +109,8 @@ export interface UserModelUI extends ModelUI<User> {
     payload: OfficialAdditionalInfoPayload
   ) => Promise<void>;
   updateAdditionalInfo?: (data: Update, id: number | string) => Promise<void>;
+  search?: (word: string) => Promise<User[]>;
+  clients?: () => Promise<User[]>;
 }
 export interface UserRolesModelUI extends ModelUI<UserRole> {
   asociate: (uid: number, roleId: number) => Promise<void>;

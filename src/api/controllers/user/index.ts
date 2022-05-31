@@ -14,6 +14,11 @@ export default class UserControllers implements UserControllerUI {
     this.service = new UserService();
   }
 
+  public async Search(req: AuthRequest, res: Response) {
+    const users = await this.userModel.clients();
+    return res.json(users);
+  }
+
   public async GetUser(req: Request, res: Response) {
     const user = await this.userModel.getById(req.params.uid);
     return res.json({

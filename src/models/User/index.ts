@@ -19,6 +19,34 @@ export default class UserModel implements UserModelUI {
     return result;
   }
 
+  public async search(word: string) {
+    const connection = await Connect();
+    const query = `SELECT id, firstName, middleName, surname, lastName, email FROM user WHERE CONCAT_WS(firstName, ' ', middleName, ' ', surname, ' ', lastName) LIKE '%${word}%'`;
+    const result = await Query(connection, query);
+    connection.end();
+    return result;
+  }
+
+  public async clients() {
+    const connection = await Connect();
+    const users_roles = await Query(
+      connection,
+      `SELECT * FROM users_roles WHERE role_id = ${4}`
+    );
+    const users = await Promise.all(
+      users_roles.map(async (user_role: UserRole) => {
+        const result = await Query(
+          connection,
+          "SELECT user.id, user.firstName, user.middleName, user.surname, user.lastName, user.email, user.idType, user.idNumber, user.cellphone, user.imgUri, user.bornDate, user.active, user.createdAt, roles.name AS role, info.active AS active, CONCAT_WS(' ', boss.firstName, boss.middleName, boss.surname, boss.lastName) AS bossName, boss.id AS bossId, sector.name AS sectorName, sector.id AS sectorId FROM user INNER JOIN users_roles ON user.id = users_roles.user_id LEFT JOIN roles ON roles.id = users_roles.role_id LEFT JOIN aditional_info_official AS info ON info.official LEFT JOIN user AS boss ON boss.id = info.boss LEFT JOIN sector ON sector.id = info.sector WHERE user.id = ?",
+          user_role.user_id
+        );
+        return result[0];
+      })
+    );
+    connection.end();
+    return users;
+  }
+
   public async getOne(params: GetOneOrDeleteOne): Promise<User | null> {
     const connection = await Connect();
     const query = GetQueryColumns("user", "SELECT", params);
