@@ -73,6 +73,7 @@ export interface SectorControllersUI {
 export interface LocationControllersUI {
   GetLocations?: (req: AuthRequest, res: Response) => Promise<Response>;
   GetLocation: (req: AuthRequest, res: Response) => Promise<Response>;
+  GetByClient?: (req: AuthRequest, res: Response) => Promise<Response>;
   CreateLocation: (req: AuthRequest, res: Response) => Promise<Response>;
   UpdateLocation: (req: AuthRequest, res: Response) => Promise<Response>;
 }

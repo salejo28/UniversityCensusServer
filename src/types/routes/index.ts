@@ -65,6 +65,7 @@ export interface LocationRoutesUI {
   getLocation: () => void;
   createLocation: () => void;
   updateLocation: () => void;
+  getByClient?: () => void;
 }
 
 export interface CensusRoutesUI {

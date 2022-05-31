@@ -15,6 +15,15 @@ class LocationRoutes implements LocationRoutesUI {
     this.getLocation();
     this.createLocation();
     this.updateLocation();
+    this.getByClient();
+  }
+
+  getByClient() {
+    this.router.get(
+      "/:cid",
+      [Authenticate],
+      this.controllers.GetByClient.bind(this.controllers)
+    );
   }
 
   getLocation() {
