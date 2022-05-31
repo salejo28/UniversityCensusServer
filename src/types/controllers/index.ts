@@ -31,6 +31,7 @@ export interface UserControllerUI {
     res: Response
   ) => Promise<Response>;
   Profile: (req: AuthRequest, res: Response) => Promise<Response>;
+  Search?: (req: AuthRequest, res: Response) => Promise<Response>;
 }
 
 export interface SpecieControllersUI {

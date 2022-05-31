@@ -26,6 +26,15 @@ class UserRoutes implements UserRoutesUI {
     this.updateAdditionalInfoOfficial();
     this.uploadImageProfile();
     this.profile();
+    this.search();
+  }
+
+  search() {
+    this.router.get(
+      "/search/user",
+      [Authenticate, StaffOnly],
+      this.controllers.Search.bind(this.controllers)
+    );
   }
 
   getUser() {
