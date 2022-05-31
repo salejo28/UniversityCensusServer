@@ -8,7 +8,7 @@ export default class RaceModel implements RaceModelUI {
     const connection = await Connect();
     const result = await Query(
       connection,
-      "SELECT race.id, race.dangerous, race.createdAt, specie.name AS specie FROM race INNER JOIN specie ON race.specie = specie.id"
+      "SELECT race.name, race.id, race.dangerous, race.createdAt, specie.name AS specie FROM race INNER JOIN specie ON race.specie = specie.id"
     );
     connection.end();
     return result;
@@ -18,7 +18,7 @@ export default class RaceModel implements RaceModelUI {
     const connection = await Connect();
     const result = await Query(
       connection,
-      "SELECT race.id, race.dangerous, race.createdAt, specie.name AS specie FROM race INNER JOIN specie ON race.specie = specie.id WHERE race.id = ?",
+      "SELECT race.name, race.id, race.dangerous, race.createdAt, specie.name AS specie FROM race INNER JOIN specie ON race.specie = specie.id WHERE race.id = ?",
       id
     );
     connection.end();
